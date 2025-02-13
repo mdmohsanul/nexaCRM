@@ -48,7 +48,7 @@ export const status = [
   },
 ];
 
-export const leadPriority = [
+export const leadPriorityData = [
   {
     id: 1,
     name: "High",

@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { RiEditBoxFill } from "react-icons/ri";
 import { MdDeleteForever } from "react-icons/md";
 import Lead_Filters from "../components/Lead_Filters";
-import { Link } from "react-router";
-import { fetchLeads } from "../features/leadSlice";
+import { Link, useNavigate } from "react-router";
+import { deleteLead, fetchLeads } from "../features/leadSlice";
 
 const LeadList = () => {
   const { leads, status, error } = useSelector((state) => state.lead);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(fetchLeads());
   }, []);
@@ -47,9 +49,13 @@ const LeadList = () => {
                     <p className="col-span-3">{item.status}</p>
 
                     <div className="relative group flex items-center">
-                      <button className="p-2 rounded-full bg-green-600 text-white hover:text-green-600 hover:bg-white cursor-pointer">
+                      <Link
+                        to="/addLead"
+                        state={item}
+                        className="p-2 rounded-full bg-green-600 text-white hover:text-green-600 hover:bg-white cursor-pointer"
+                      >
                         <RiEditBoxFill size={23} />
-                      </button>
+                      </Link>
 
                       {/* Tooltip */}
                       <span className="absolute -top-5 right-0 ml-2 px-2 py-1 text-sm text-white bg-gray-800 rounded opacity-0 group-hover:opacity-100 transition-opacity">
@@ -57,7 +63,10 @@ const LeadList = () => {
                       </span>
                     </div>
                     <div className="relative group flex items-center">
-                      <button className="p-2 rounded-full bg-red-500 text-white hover:bg-white hover:text-red-500 cursor-pointer">
+                      <button
+                        className="p-2 rounded-full bg-red-500 text-white hover:bg-white hover:text-red-500 cursor-pointer"
+                        onClick={() => dispatch(deleteLead(item._id))}
+                      >
                         <MdDeleteForever size={25} />
                       </button>
 

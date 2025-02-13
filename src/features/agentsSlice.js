@@ -5,7 +5,7 @@ export const fetchAgents = createAsyncThunk("agents/fetchAgents", async () => {
   const response = await axios.get(
     "https://nexa-crm-backend.vercel.app/api/agents"
   );
-  console.log(response.data);
+
   return response.data;
 });
 
