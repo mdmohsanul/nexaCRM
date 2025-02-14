@@ -5,6 +5,7 @@ export const fetchLeads = createAsyncThunk("lead/fetchLeads", async () => {
   const response = await axios.get(
     "https://nexa-crm-backend.vercel.app/api/leads"
   );
+  console.log("response data", response.data);
 
   return response.data;
 });
@@ -14,7 +15,7 @@ export const addLead = createAsyncThunk("lead/addLead", async (data) => {
     "https://nexa-crm-backend.vercel.app/api/leads",
     data
   );
-  console.log("response data", response.data);
+  //console.log("response data", response.data);
   return response.data.newLead;
 });
 export const updateLead = createAsyncThunk(
@@ -58,7 +59,8 @@ const leadSlice = createSlice({
         state.error = error.message;
       }),
       builders.addCase(addLead.fulfilled, (state, action) => {
-        state.leads = state.leads.push(action.payload);
+        console.log(action.payload);
+        state.leads.push(action.payload);
       }),
       builders.addCase(updateLead.fulfilled, (state, action) => {
         const index = state.leads.findIndex((s) => s._id === action.payload.id);

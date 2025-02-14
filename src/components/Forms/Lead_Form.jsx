@@ -91,7 +91,7 @@ const Lead_Form = ({ existingData = null }) => {
           <Input_Box
             label="Lead Name"
             inputType="text"
-            placeholder="janesmith"
+            placeholder="Intuit Info."
             name="leadName"
             value={leadName}
             setvalue={setLeadName}

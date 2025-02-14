@@ -13,7 +13,7 @@ const LeadList = () => {
 
   useEffect(() => {
     dispatch(fetchLeads());
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <section className="w-full pl-60 ">
