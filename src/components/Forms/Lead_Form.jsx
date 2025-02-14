@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { leadSrc, status, leadPriorityData } from "../../data/leadFormData";
-import { addLead, updateLead } from "../../features/leadSlice";
+import { addLead, fetchLeads, updateLead } from "../../features/leadSlice";
 import Dropdown from "./Dropdown";
 import Input_Box from "./Input_Box";
 import Multi_Select_Dropdown from "./Multi_Select_Dropdown";
@@ -73,9 +73,10 @@ const Lead_Form = ({ existingData = null }) => {
   };
   const saveHandler = () => {
     const data = formValidation();
+    console.log("");
     if (data) {
       dispatch(addLead(data));
-
+      dispatch(fetchLeads());
       clearForm();
     }
   };
