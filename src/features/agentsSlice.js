@@ -9,6 +9,16 @@ export const fetchAgents = createAsyncThunk("agents/fetchAgents", async () => {
   return response.data;
 });
 
+export const addAgent = createAsyncThunk("agent/addAgent", async (data) => {
+  console.log(data);
+  const response = await axios.post(
+    "https://nexa-crm-backend.vercel.app/api/agents",
+    data
+  );
+  console.log(response.data.newAgent);
+  return response.data.newAgent;
+});
+
 const agentsSlice = createSlice({
   name: "agents",
   initialState: {
@@ -26,7 +36,10 @@ const agentsSlice = createSlice({
         state.agents = action.payload;
       })
       .addCase(fetchAgents.rejected, (state, action) => {
-        state.error = error.message;
+        state.error = action.error.message;
+      }),
+      builders.addCase(addAgent.fulfilled, (state, action) => {
+        state.agents.push(action.payload);
       });
   },
 });

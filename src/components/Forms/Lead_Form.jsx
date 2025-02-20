@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import { leadSrc, status, leadPriorityData } from "../../data/leadFormData";
 import { addLead, fetchLeads, updateLead } from "../../features/leadSlice";
 import Dropdown from "./Dropdown";
@@ -7,6 +8,7 @@ import Input_Box from "./Input_Box";
 import Multi_Select_Dropdown from "./Multi_Select_Dropdown";
 
 const Lead_Form = ({ existingData = null }) => {
+  const navigate = useNavigate();
   const { agents } = useSelector((state) => state.agents);
   const dispatch = useDispatch();
   const [leadName, setLeadName] = useState(existingData?.name || "");
@@ -78,6 +80,9 @@ const Lead_Form = ({ existingData = null }) => {
       dispatch(addLead(data));
       dispatch(fetchLeads());
       clearForm();
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     }
   };
 

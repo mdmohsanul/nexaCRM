@@ -5,10 +5,15 @@ import "./App.css";
 import Sidebar from "./components/Sidebar";
 import { fetchAgents } from "./features/agentsSlice";
 import { fetchLeads } from "./features/leadSlice";
+import AddAgent from "./pages/AddAgent";
 import AddNewLead from "./pages/AddNewLead";
 import Dashboard from "./pages/Dashboard";
 import LeadList from "./pages/LeadList";
 import Lead_Management from "./pages/Lead_Management";
+import Lead_Status_View from "./pages/Lead_Status_View";
+import Reports from "./pages/Reports";
+import Sales_Agent from "./pages/Sales_Agent";
+import Sales_Agent_View from "./pages/Sales_Agent_View";
 import Test from "./pages/Test";
 
 function App() {
@@ -44,6 +49,26 @@ const appRouter = createBrowserRouter([
       {
         path: "/addLead",
         element: <AddNewLead />,
+      },
+      {
+        path: "/salesAgents",
+        element: <Sales_Agent />,
+      },
+      {
+        path: "/salesAgents/:id",
+        element: <Sales_Agent_View />,
+      },
+      {
+        path: "/addAgent",
+        element: <AddAgent />,
+      },
+      {
+        path: "/leadStatus/:status",
+        element: <Lead_Status_View />,
+      },
+      {
+        path: "/reports",
+        element: <Reports />,
       },
       {
         path: "/test",

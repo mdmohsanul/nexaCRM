@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLeads } from "../features/leadSlice";
+import { leadStatusIcon } from "../data/leadStatusIcon";
+import { Link } from "react-router";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -21,20 +23,48 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(fetchLeads());
   }, []);
+  function combineLeadWithIcons(arr1, arr2) {
+    return arr1.map((item, i) => ({ ...item, linkIcon: arr2[i] }));
+  }
+  const updateLeads = combineLeadWithIcons(leadStatus, leadStatusIcon);
+  if (error) {
+    return <p>error</p>;
+  }
   return (
     <>
       <section className="w-full pl-60 ">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto ">
           <h1 className="text-center py-3 text-3xl text-white bg-[#1C4E80]">
             Dashboard
           </h1>
-          <div className="px-7 mt-8">
-            <h2 className="text-xl">Lead Status</h2>
-            {leadStatus?.map(({ status, count }, i) => (
-              <li key={i}>
-                {status} [{count}] leads
-              </li>
-            ))}
+          <div className="pt-6 pl-10">
+            <h2 className="text-2xl font-medium text-gray-900 pb-6 ">
+              Lead Status
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-5 ">
+              {updateLeads?.map((item, i) => (
+                <Link to={`/leadStatus/${item.status}`} key={i}>
+                  <div className=" w-48 py-6 flex flex-col items-center gap-3 justify-center cursor-pointer shadow-[0_3px_10px_rgb(0,0,0,0.2)] hover:shadow-[0_3px_10px_rgb(0,0,0,0.4)]">
+                    <span>
+                      {
+                        <item.linkIcon.icon
+                          size={50}
+                          className={` text-white ${item.linkIcon.class} py-3 px-3 rounded-full `}
+                        />
+                      }
+                    </span>
+                    <p className="text-gray-800 font-medium">{item.status}</p>
+                    <p>
+                      {" "}
+                      <span className="text-2xl text-gray-700 font-medium">
+                        {item.count}{" "}
+                      </span>
+                      leads
+                    </p>
+                  </div>
+                </Link>
+              ))}{" "}
+            </div>
           </div>
         </div>
       </section>

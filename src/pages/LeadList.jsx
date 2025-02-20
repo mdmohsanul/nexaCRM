@@ -21,30 +21,31 @@ const LeadList = () => {
           <h1 className="text-center py-3 text-3xl text-white bg-[#1C4E80]">
             Leads
           </h1>
-          <div className="h-14">
+          <div className="h-14 pt-6 pl-10">
             <Lead_Filters />
           </div>
           <Link
             to="/addLead"
-            className="bg-blue-600 text-white py-2 px-6 ml-28 cursor-pointer hover:bg-blue-800"
+            className="bg-blue-600 text-white py-2 px-6 ml-10 rounded-lg cursor-pointer hover:bg-blue-800"
           >
             Add Lead
           </Link>
-          <div className="px-7 mt-4">
+          <div className="pt-6 pl-10">
             {status === "loading" && <p>Loading....</p>}
             {error && <p>{error}</p>}
             {status === "success" && (
-              <div className="flex flex-col justify-center items-center">
+              <div className="flex flex-col ">
+                {/* <div className=" rounded-md w-4xl h-14  grid cursor-pointer grid-cols-9 text-g justify-items-center content-center items-center bg-blue-600"></div> */}
                 {leads.map((item, i) => (
                   <div
                     key={item._id}
                     className={`${
                       i % 2 === 0 ? "bg-amber-100" : "bg-blue-300"
-                    } rounded-md w-4xl h-14 mb-3 grid cursor-pointer grid-cols-9 text-g justify-items-center content-center items-center`}
+                    } rounded-md w-4xl h-14 mb-3 text-gray-900 grid cursor-pointer grid-cols-9 text-g justify-items-center content-center items-center`}
                   >
                     <p className="">{i + 1}.</p>
                     <Link to={`/leads/${item._id}`} className="col-span-3">
-                      <p>{item.name}</p>
+                      <p className="">{item.name}</p>
                     </Link>
                     <p className="col-span-3">{item.status}</p>
 

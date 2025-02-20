@@ -56,7 +56,7 @@ const leadSlice = createSlice({
         state.leads = action.payload;
       })
       .addCase(fetchLeads.rejected, (state, action) => {
-        state.error = error.message;
+        state.error = action.error.message;
       }),
       builders.addCase(addLead.fulfilled, (state, action) => {
         console.log(action.payload);

@@ -1,26 +1,31 @@
 export const sidebarList = [
   {
     id: 1,
+    name: "Dashboard",
+    linkName: "",
+  },
+  {
+    id: 2,
     name: "Leads",
     linkName: "leads",
   },
   {
-    id: 2,
-    name: "Sales",
-    linkName: "",
-  },
-  {
     id: 3,
-    name: "Agents",
-    linkName: "",
+    name: "Sales",
+    linkName: "/sales",
   },
   {
     id: 4,
-    name: "Reports",
-    linkName: "",
+    name: "Agents",
+    linkName: "salesAgents",
   },
   {
     id: 5,
+    name: "Reports",
+    linkName: "reports",
+  },
+  {
+    id: 6,
     name: "Settings",
     linkName: "",
   },
