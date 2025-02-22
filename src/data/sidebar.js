@@ -27,6 +27,6 @@ export const sidebarList = [
   {
     id: 6,
     name: "Settings",
-    linkName: "",
+    linkName: "settings",
   },
 ];

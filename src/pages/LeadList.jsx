@@ -5,6 +5,7 @@ import Lead_Filters from "../components/Lead_Filters";
 import { Link, useNavigate } from "react-router";
 import { deleteLead, fetchLeads } from "../features/leadSlice";
 import Lead_List from "../components/Lead_List";
+import Header from "../components/Header";
 
 const LeadList = () => {
   const dispatch = useDispatch();
@@ -35,9 +36,7 @@ const LeadList = () => {
     <>
       <section className="w-full pl-60 ">
         <div className="max-w-7xl mx-auto ">
-          <div className="text-center py-3 text-3xl h-16 font-semibold text-gray-800 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-            Leads
-          </div>
+          <Header headerContent="Leads" />
           <div className="max-w-4xl mt-6 ml-10">
             <Lead_Filters />
 

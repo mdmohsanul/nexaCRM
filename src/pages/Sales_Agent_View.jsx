@@ -6,6 +6,7 @@ import { GoClock } from "react-icons/go";
 import { BsTag } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
 import { FaDiagramProject } from "react-icons/fa6";
+import Header from "../components/Header";
 
 const Sales_Agent_View = () => {
   const { id } = useParams();
@@ -35,9 +36,8 @@ const Sales_Agent_View = () => {
     <>
       <section className="w-full pl-60 ">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-center py-3 text-3xl text-white bg-[#1C4E80]">
-            Sales Agent View
-          </h1>
+          <Header headerContent="Sales Agent View" />
+
           <div className="pl-10 pt-7 max-w-4xl">
             <div className="flex items-center justify-between mr-8">
               <div className="text-xl font-medium flex items-center gap-4 py-4 text-gray-800">

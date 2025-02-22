@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router";
 import { GoClock } from "react-icons/go";
 import { TbUsers } from "react-icons/tb";
+import Header from "../components/Header";
 
 const Lead_Status_View = () => {
   const { status } = useParams();
@@ -28,9 +29,8 @@ const Lead_Status_View = () => {
     <>
       <section className="w-full pl-60 ">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-center py-3 text-3xl text-white bg-[#1C4E80]">
-            Leads by Status
-          </h1>
+          <Header headerContent="Leads by Status" />
+
           <div className="pt-6 pl-10">
             <p className="text-xl text-gray-800">
               <span className="text-2xl text-gray-800 font-medium">

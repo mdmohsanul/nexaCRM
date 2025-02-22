@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchLeads } from "../features/leadSlice";
 import { leadStatusIcon } from "../data/leadStatusIcon";
 import { Link } from "react-router";
+import Header from "../components/Header";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -36,9 +37,8 @@ const Dashboard = () => {
     <>
       <section className="w-full pl-60 ">
         <div className="max-w-7xl mx-auto ">
-          <h1 className="text-center py-3 text-3xl text-white bg-[#1C4E80]">
-            Dashboard
-          </h1>
+          <Header headerContent="Dashboard" />
+
           <div className="pt-6 pl-10">
             <h2 className="text-2xl font-medium text-gray-900 pb-6 ">
               Lead Status

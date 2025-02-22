@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router";
 import { fetchComments, postComment } from "../features/commentSlice";
 import Lead_Details from "../components/Lead_Details";
 import Comment_List from "../components/Comment_List";
+import Header from "../components/Header";
 
 const Lead_Management = () => {
   const { leadId } = useParams();
@@ -40,10 +41,8 @@ const Lead_Management = () => {
     <>
       <section className="w-full pl-60 ">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-center py-3 text-3xl text-white bg-[#1C4E80]">
-            Lead Management:{" "}
-            <span className="text-2xl">[{findLead?.name}]</span>
-          </h1>
+          <Header headerContent="Lead Management" leadName={findLead?.name} />
+
           <Lead_Details findLead={findLead} />
         </div>
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router";
 import Add_Agent_Form from "../components/Add_Agent_Form";
+import Header from "../components/Header";
 import { fetchAgents } from "../features/agentsSlice";
 import AddAgent from "./AddAgent";
 
@@ -21,9 +22,7 @@ const Sales_Agent = () => {
     <>
       <section className="w-full pl-60 ">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-center py-3 text-3xl text-white bg-[#1C4E80]">
-            Sales Agent Management
-          </h1>
+          <Header headerContent="Sales Agent Management" />
 
           {status === "loading" && <p>Loading.....</p>}
           {status === "success" && (
