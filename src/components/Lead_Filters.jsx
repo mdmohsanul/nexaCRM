@@ -1,57 +1,115 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useSearchParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams, Link } from "react-router";
+import { leadStatusFilter, salesAgentName } from "../features/leadSlice";
 
 const Lead_Filters = () => {
+  const dispatch = useDispatch();
   const { agents } = useSelector((state) => state.agents);
-  const { leads, status, error } = useSelector((state) => state.lead);
-  const [searchParams, setSearchParams] = useSearchParams("");
+  const leadStatusArr = [
+    "New",
+    "Contacted",
+    "Qualified",
+    "Proposal Sent",
+    "Closed",
+  ];
 
+  const [searchParams, setSearchParams] = useSearchParams();
   // Get filter values from the URL
   const salesAgent = searchParams.get("salesAgent") || "";
   const leadStatus = searchParams.get("leadStatus") || "";
 
   // Filter products based on URL params
-  // useEffect(() => {
-  //   let filtered = leads;
+  useEffect(() => {
+    dispatch(salesAgentName(salesAgent));
+    dispatch(leadStatusFilter(leadStatus));
+  }, [salesAgent, leadStatus]);
 
-  //   if (salesAgent) {
-  //     filtered = filtered.filter((p) => p.category === category);
-  //   }
-
-  //   if (leadStatus) {
-  //     filtered = filtered.filter((p) => p.price >= Number(minPrice));
-  //   }
-
-  //   setFilteredProducts(filtered);
-  // }, [salesAgent, leadStatus]);
+  // Update URL when filters change
+  const updateFilters = (key, value) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (value) {
+      newParams.set(key, value);
+    } else {
+      newParams.delete(key);
+    }
+    setSearchParams(newParams);
+  };
   return (
     <>
-      <div className="flex">
-        <h1>Filters: </h1>
-        <div>
-          <label htmlFor="status">
-            Status:
-            <select name="status" id="status" className="text-sm rounded-md">
-              <option value="New">New</option>
-              <option value="Contacted">Contacted</option>
-              <option value="Qualified">Qualified</option>
-              <option value="Proposal Sent">Proposal Sent</option>
-              <option value="Closed">Closed</option>
-            </select>
-          </label>
+      <div className="flex items-center justify-between mb-6 border-b border-gray-300 pb-4">
+        <div className="flex  flex-col gap-2.5">
+          <div className="flex items-center">
+            <h1 className="pr-2  text-gray-800 font-medium">Filters: </h1>
+
+            <label htmlFor="status" className="mr-6">
+              <select
+                name="status"
+                id="status"
+                className="text-sm rounded-sm border border-gray-300 ml-3 text-gray-700 p-2 w-40"
+                onChange={(e) => updateFilters("leadStatus", e.target.value)}
+                value={leadStatus}
+              >
+                <option value="">Status</option>
+                {leadStatusArr.map((item, i) => (
+                  <option key={i} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label htmlFor="agents">
+              <select
+                name="agents"
+                id="agents"
+                className="text-sm rounded-sm border border-gray-300  text-gray-700 py-2 px-2 w-40"
+                onChange={(e) => updateFilters("salesAgent", e.target.value)}
+                value={salesAgent}
+              >
+                <option value="">Sales Agent</option>
+                {agents?.map((item) => (
+                  <option key={item._id} value={item.name}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <div className="flex items-center">
+            <h1 className="mr-3 text-gray-800 font-medium">Sort By: </h1>
+
+            <label htmlFor="priority" className="mr-6">
+              <select
+                name="priority"
+                id="priority"
+                className="text-sm rounded-sm border border-gray-300  text-gray-700 p-2 w-40"
+              >
+                <option value="">Priority</option>
+                <option value="High">High</option>
+                <option value="Low">Low</option>
+              </select>
+            </label>
+            <label htmlFor="closeTime">
+              <select
+                name="closeTime"
+                id="closeTime"
+                className="text-sm rounded-sm border border-gray-300  text-gray-700 p-2 w-40"
+              >
+                <option value="">Time To Close</option>
+                <option value="High">High</option>
+                <option value="Low">Low</option>
+              </select>
+            </label>
+          </div>
         </div>
-        <div>
-          <label htmlFor="agents">Sales Agents: </label>
-          <select name="agents" id="agents">
-            <option value="">Select Agent</option>
-            {agents?.map((item) => (
-              <option key={item._id} value={item.name}>
-                {item.name}
-              </option>
-            ))}
-          </select>
-        </div>
+
+        <Link
+          to="/addLead"
+          className="bg-blue-600 text-white py-2 px-6 ml-10 rounded-lg cursor-pointer hover:bg-blue-800"
+        >
+          + Add Lead
+        </Link>
       </div>
     </>
   );

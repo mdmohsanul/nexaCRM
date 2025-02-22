@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import { GoClock } from "react-icons/go";
 import { BsTag } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
+import { FaDiagramProject } from "react-icons/fa6";
 
 const Sales_Agent_View = () => {
   const { id } = useParams();
@@ -37,26 +38,38 @@ const Sales_Agent_View = () => {
           <h1 className="text-center py-3 text-3xl text-white bg-[#1C4E80]">
             Sales Agent View
           </h1>
-          <div className="pl-10 pt-7">
-            <h1 className=" text-2xl font-medium text-gray-800">
-              Lead List By Agent
-            </h1>
+          <div className="pl-10 pt-7 max-w-4xl">
+            <div className="flex items-center justify-between mr-8">
+              <div className="text-xl font-medium flex items-center gap-4 py-4 text-gray-800">
+                <span className="text-blue-600 bg-gray-200 p-2 rounded-full">
+                  <FiUser size={22} />
+                </span>{" "}
+                <div className="font-normal">
+                  <p className="text-xl font-medium text-gray-900">
+                    {" "}
+                    Sales Agent:
+                  </p>
+                  <p className="text-gray-600 text-xl"> {agentDetails?.name}</p>
+                </div>
+              </div>
+              <div className="flex items-center text-gray-500 gap-3">
+                <span className="text-gray-600">
+                  <FaDiagramProject size={22} />
+                </span>
+                <p>
+                  {findSales.length}
+                  {"  "}leads
+                </p>
+              </div>
+            </div>
 
-            <h1 className="text-xl font-medium flex items-center gap-2 py-4 text-gray-800">
-              <span className="text-blue-600 bg-gray-200 p-2 rounded-full">
-                <FiUser size={22} />
-              </span>
-              Sales Agent:{" "}
-              <span className="font-normal">{agentDetails?.name}</span>
-            </h1>
-            <h2 className="text-xl pt-5">Lead Assigned:</h2>
             {findSales?.length === 0 && (
               <div>
                 <p>No, Lead found for this Sales Agent.</p>
                 <Link to="/addLead">Go to create lead</Link>
               </div>
             )}
-            <ul className="mt-7 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg max-w-4xl ">
+            <ul className="mt-7 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg  ">
               {findSales?.map((lead, i) => (
                 <div
                   key={lead._id}

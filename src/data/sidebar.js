@@ -12,7 +12,7 @@ export const sidebarList = [
   {
     id: 3,
     name: "Sales",
-    linkName: "/sales",
+    linkName: "sales",
   },
   {
     id: 4,

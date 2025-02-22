@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import nexaLogo from "/NexaCRM-logo.svg";
 import { sidebarList } from "../data/sidebar";
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
 
 const Sidebar = () => {
   const [activeStatus, setActiveStatus] = useState("Dashboard");

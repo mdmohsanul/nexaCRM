@@ -6,8 +6,9 @@ import Sidebar from "./components/Sidebar";
 import { fetchAgents } from "./features/agentsSlice";
 import { fetchLeads } from "./features/leadSlice";
 import AddAgent from "./pages/AddAgent";
-import AddNewLead from "./pages/AddNewLead";
+import Add_New_Lead from "./pages/Add_New_Lead";
 import Dashboard from "./pages/Dashboard";
+import Error_Page from "./pages/Error_Page";
 import LeadList from "./pages/LeadList";
 import Lead_Management from "./pages/Lead_Management";
 import Lead_Status_View from "./pages/Lead_Status_View";
@@ -48,7 +49,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/addLead",
-        element: <AddNewLead />,
+        element: <Add_New_Lead />,
       },
       {
         path: "/salesAgents",
@@ -73,6 +74,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/test",
         element: <Test />,
+      },
+      {
+        path: "*",
+        element: <Error_Page />,
       },
     ],
   },

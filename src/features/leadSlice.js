@@ -44,8 +44,17 @@ const leadSlice = createSlice({
     leads: [],
     status: "idle",
     error: null,
+    agentName: "",
+    leadStatus: "",
   },
-  reducers: {},
+  reducers: {
+    salesAgentName: (state, action) => {
+      state.agentName = action.payload;
+    },
+    leadStatusFilter: (state, action) => {
+      state.leadStatus = action.payload;
+    },
+  },
   extraReducers: (builders) => {
     builders
       .addCase(fetchLeads.pending, (state, action) => {
@@ -75,5 +84,7 @@ const leadSlice = createSlice({
       });
   },
 });
+
+export const { salesAgentName, leadStatusFilter } = leadSlice.actions;
 
 export default leadSlice.reducer;

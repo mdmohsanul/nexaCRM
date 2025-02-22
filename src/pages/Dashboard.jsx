@@ -7,7 +7,7 @@ import { Link } from "react-router";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { leads, status, error } = useSelector((state) => state.lead);
-  console.log(leads);
+
   const leadStatus = Object.entries(
     leads.reduce((acc, curr) => {
       // if (curr.status in acc) {
@@ -23,6 +23,8 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(fetchLeads());
   }, []);
+
+  // In leadStatus array we are adding icons to every object
   function combineLeadWithIcons(arr1, arr2) {
     return arr1.map((item, i) => ({ ...item, linkIcon: arr2[i] }));
   }

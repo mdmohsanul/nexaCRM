@@ -1,82 +1,52 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RiEditBoxFill } from "react-icons/ri";
-import { MdDeleteForever } from "react-icons/md";
 import Lead_Filters from "../components/Lead_Filters";
+
 import { Link, useNavigate } from "react-router";
 import { deleteLead, fetchLeads } from "../features/leadSlice";
+import Lead_List from "../components/Lead_List";
 
 const LeadList = () => {
-  const { leads, status, error } = useSelector((state) => state.lead);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { leads, status, error, agentName, leadStatus } = useSelector(
+    (state) => state.lead
+  );
 
+  const [filteredProducts, setFilteredProducts] = useState(leads);
   useEffect(() => {
-    dispatch(fetchLeads());
-  }, [dispatch]);
+    let filtered = leads;
+
+    if (agentName) {
+      filtered = filtered.filter((p) => p.salesAgent.name === agentName);
+    }
+
+    if (leadStatus) {
+      filtered = filtered.filter((p) => p.status === leadStatus);
+    }
+
+    setFilteredProducts(filtered);
+  }, [agentName, leadStatus, leads]);
+
+  // useEffect(() => {
+  //   dispatch(fetchLeads());
+  // }, [dispatch]);
   return (
     <>
       <section className="w-full pl-60 ">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-center py-3 text-3xl text-white bg-[#1C4E80]">
+        <div className="max-w-7xl mx-auto ">
+          <div className="text-center py-3 text-3xl h-16 font-semibold text-gray-800 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
             Leads
-          </h1>
-          <div className="h-14 pt-6 pl-10">
-            <Lead_Filters />
           </div>
-          <Link
-            to="/addLead"
-            className="bg-blue-600 text-white py-2 px-6 ml-10 rounded-lg cursor-pointer hover:bg-blue-800"
-          >
-            Add Lead
-          </Link>
-          <div className="pt-6 pl-10">
+          <div className="max-w-4xl mt-6 ml-10">
+            <Lead_Filters />
+
             {status === "loading" && <p>Loading....</p>}
             {error && <p>{error}</p>}
             {status === "success" && (
               <div className="flex flex-col ">
-                {/* <div className=" rounded-md w-4xl h-14  grid cursor-pointer grid-cols-9 text-g justify-items-center content-center items-center bg-blue-600"></div> */}
-                {leads.map((item, i) => (
-                  <div
-                    key={item._id}
-                    className={`${
-                      i % 2 === 0 ? "bg-amber-100" : "bg-blue-300"
-                    } rounded-md w-4xl h-14 mb-3 text-gray-900 grid cursor-pointer grid-cols-9 text-g justify-items-center content-center items-center`}
-                  >
-                    <p className="">{i + 1}.</p>
-                    <Link to={`/leads/${item._id}`} className="col-span-3">
-                      <p className="">{item.name}</p>
-                    </Link>
-                    <p className="col-span-3">{item.status}</p>
-
-                    <div className="relative group flex items-center">
-                      <Link
-                        to="/addLead"
-                        state={item}
-                        className="p-2 rounded-full bg-green-600 text-white hover:text-green-600 hover:bg-white cursor-pointer"
-                      >
-                        <RiEditBoxFill size={23} />
-                      </Link>
-
-                      {/* Tooltip */}
-                      <span className="absolute -top-5 right-0 ml-2 px-2 py-1 text-sm text-white bg-gray-800 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                        Edit
-                      </span>
-                    </div>
-                    <div className="relative group flex items-center">
-                      <button
-                        className="p-2 rounded-full bg-red-500 text-white hover:bg-white hover:text-red-500 cursor-pointer"
-                        onClick={() => dispatch(deleteLead(item._id))}
-                      >
-                        <MdDeleteForever size={25} />
-                      </button>
-
-                      {/* Tooltip */}
-                      <span className="absolute -top-5 right-0 ml-2 px-2 py-1 text-sm text-white bg-gray-800 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                        Delete
-                      </span>
-                    </div>
-                  </div>
+                {filteredProducts?.map((item) => (
+                  <Lead_List lead={item} key={item._id} />
                 ))}
               </div>
             )}
