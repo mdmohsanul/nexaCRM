@@ -36,12 +36,14 @@ const Leads = () => {
           <div className="max-w-4xl pt-24 ml-10">
             {status === "loading" && <List_Shimmer />}
             {error && <p>{error}</p>}
-            <Lead_Filters />
             {status === "success" && leads.length > 0 ? (
-              <div className="flex flex-col ">
-                {filteredProducts?.map((item) => (
-                  <Lead_List lead={item} key={item._id} />
-                ))}
+              <div>
+                <Lead_Filters />
+                <div className="flex flex-col ">
+                  {filteredProducts?.map((item) => (
+                    <Lead_List lead={item} key={item._id} />
+                  ))}
+                </div>
               </div>
             ) : (
               <div>
