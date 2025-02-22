@@ -17,3 +17,21 @@
   body{
     font-family:  "Poppins", "Rubik";
   }
+
+  .dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-template-rows: 1fr 1fr; /* Two rows */
+    gap: 10px; /* Space between charts */
+    border: 2px solid black; /* Outer border */
+    padding: 10px;
+  }
+  
+  .chart-box {
+    border: 2px solid black; /* Border for each box */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; /* Optional: improves visibility */
+  }

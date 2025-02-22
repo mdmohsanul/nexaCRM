@@ -32,15 +32,15 @@ const Lead_Details = ({ findLead }) => {
                 <div className="flex justify-between items-start">
                   <div>
                     <h1 className="text-2xl font-bold text-gray-800">
-                      {findLead.name}
+                      {findLead?.name}
                     </h1>
                     <div className="mt-2 flex items-center">
                       <span
                         className={`text-xs font-medium px-2 py-1 rounded ${getStatusBadge(
-                          findLead.status
+                          findLead?.status
                         )}`}
                       >
-                        {findLead.status}
+                        {findLead?.status}
                       </span>
                     </div>
                   </div>
@@ -73,7 +73,7 @@ const Lead_Details = ({ findLead }) => {
                           <p className="text-sm text-gray-500">Sales Agent</p>
                           <p className="font-medium">
                             {" "}
-                            {findLead.salesAgent.name}
+                            {findLead?.salesAgent.name}
                           </p>
                         </div>
                       </div>
@@ -82,7 +82,7 @@ const Lead_Details = ({ findLead }) => {
                         <FiLink size={18} className="text-gray-400 mt-1 mr-3" />
                         <div>
                           <p className="text-sm text-gray-500">Lead Source</p>
-                          <p className="font-medium">{findLead.source}</p>
+                          <p className="font-medium">{findLead?.source}</p>
                         </div>
                       </div>
 
@@ -90,7 +90,7 @@ const Lead_Details = ({ findLead }) => {
                         <BsTag size={18} className="text-gray-400 mt-1 mr-3" />
                         <div>
                           <p className="text-sm text-gray-500">Priority</p>
-                          <p className="font-medium">{findLead.priority}</p>
+                          <p className="font-medium">{findLead?.priority}</p>
                         </div>
                       </div>
 
@@ -101,7 +101,7 @@ const Lead_Details = ({ findLead }) => {
                         />
                         <div>
                           <p className="text-sm text-gray-500">Time to Close</p>
-                          <p className="font-medium">{findLead.timeToClose}</p>
+                          <p className="font-medium">{findLead?.timeToClose}</p>
                         </div>
                       </div>
                     </div>

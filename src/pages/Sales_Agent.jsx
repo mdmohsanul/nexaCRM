@@ -26,7 +26,7 @@ const Sales_Agent = () => {
 
           {status === "loading" && <p>Loading.....</p>}
           {status === "success" && (
-            <div className="pl-10 pt-6">
+            <div className="pl-10 pt-24">
               <h1 className="text-2xl font-bold text-gray-900 pb-7">
                 Sales Agent List
               </h1>

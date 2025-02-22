@@ -38,7 +38,7 @@ const Sales_Agent_View = () => {
         <div className="max-w-7xl mx-auto">
           <Header headerContent="Sales Agent View" />
 
-          <div className="pl-10 pt-7 max-w-4xl">
+          <div className="pl-10 pt-24 max-w-4xl">
             <div className="flex items-center justify-between mr-8">
               <div className="text-xl font-medium flex items-center gap-4 py-4 text-gray-800">
                 <span className="text-blue-600 bg-gray-200 p-2 rounded-full">

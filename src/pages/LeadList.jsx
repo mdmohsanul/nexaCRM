@@ -34,10 +34,10 @@ const LeadList = () => {
   // }, [dispatch]);
   return (
     <>
-      <section className="w-full pl-60 ">
-        <div className="max-w-7xl mx-auto ">
+      <section className="w-full pl-60">
+        <div className="max-w-7xl mx-auto relative">
           <Header headerContent="Leads" />
-          <div className="max-w-4xl mt-6 ml-10">
+          <div className="max-w-4xl pt-24 ml-10">
             <Lead_Filters />
 
             {status === "loading" && <p>Loading....</p>}

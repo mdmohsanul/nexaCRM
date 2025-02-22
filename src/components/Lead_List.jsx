@@ -68,7 +68,7 @@ const Lead_List = ({ lead }) => {
           <Link
             to="/addLead"
             state={lead}
-            className="p-2 rounded-full bg-green-600 text-white hover:text-green-600 hover:bg-white cursor-pointer"
+            className="p-2 rounded-full bg-green-600 text-white hover:text-green-600 hover:bg-white cursor-pointer shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
           >
             <RiEditBoxFill size={23} />
           </Link>
@@ -80,7 +80,7 @@ const Lead_List = ({ lead }) => {
         </div>
         <div className="relative group flex items-center">
           <button
-            className="p-2 rounded-full bg-red-500 text-white hover:bg-white hover:text-red-500 cursor-pointer"
+            className="p-2 rounded-full bg-red-500 text-white hover:bg-white hover:text-red-500 cursor-pointer shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
             onClick={() => dispatch(deleteLead(lead._id))}
           >
             <MdDeleteForever size={25} />

@@ -39,7 +39,7 @@ const Dashboard = () => {
         <div className="max-w-7xl mx-auto ">
           <Header headerContent="Dashboard" />
 
-          <div className="pt-6 pl-10">
+          <div className="pt-24 pl-10">
             <h2 className="text-2xl font-medium text-gray-900 pb-6 ">
               Lead Status
             </h2>
