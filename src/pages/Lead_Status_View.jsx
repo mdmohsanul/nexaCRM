@@ -1,10 +1,10 @@
 import React from "react";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
 import { useSelector } from "react-redux";
-import { Link } from "react-router";
 import { GoClock } from "react-icons/go";
 import { TbUsers } from "react-icons/tb";
 import Header from "../components/Header";
+import Lead_Status_Filter from "../components/Lead_Status_Filter";
 
 const Lead_Status_View = () => {
   const { status } = useParams();
@@ -31,15 +31,17 @@ const Lead_Status_View = () => {
         <div className="max-w-7xl mx-auto">
           <Header headerContent="Leads by Status" />
 
-          <div className="pt-6 pl-10">
-            <p className="text-xl text-gray-800">
-              <span className="text-2xl text-gray-800 font-medium">
+          <div className="pt-24 pl-10 max-w-4xl ">
+            <p className="text-xl text-gray-800 mb-4">
+              <span className="text-xl text-gray-800 font-medium">
                 Status:{" "}
               </span>{" "}
               {status}
             </p>
-            <div className="h-16 bg-amber-500">Filters</div>
-            <div className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg max-w-4xl my-5">
+            <div className="">
+              <Lead_Status_Filter />
+            </div>
+            <div className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg  my-5">
               {leadByStatus?.map((item, i) => (
                 <div
                   key={item._id}

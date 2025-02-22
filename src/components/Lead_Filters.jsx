@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams, Link } from "react-router";
 import { leadStatusFilter, salesAgentName } from "../features/leadSlice";
+import Time_To_Close from "./Filters/Time_To_Close";
 
 const Lead_Filters = () => {
   const dispatch = useDispatch();
@@ -90,17 +91,7 @@ const Lead_Filters = () => {
                 <option value="Low">Low</option>
               </select>
             </label>
-            <label htmlFor="closeTime">
-              <select
-                name="closeTime"
-                id="closeTime"
-                className="text-sm rounded-sm border border-gray-300  text-gray-700 p-2 w-40"
-              >
-                <option value="">Time To Close</option>
-                <option value="High">High</option>
-                <option value="Low">Low</option>
-              </select>
-            </label>
+            <Time_To_Close />
           </div>
         </div>
 

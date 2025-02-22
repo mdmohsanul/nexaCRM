@@ -7,6 +7,7 @@ import { BsTag } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
 import { FaDiagramProject } from "react-icons/fa6";
 import Header from "../components/Header";
+import Leads_Agent_Filter from "../components/Leads_Agent_Filter";
 
 const Sales_Agent_View = () => {
   const { id } = useParams();
@@ -38,8 +39,8 @@ const Sales_Agent_View = () => {
         <div className="max-w-7xl mx-auto">
           <Header headerContent="Sales Agent View" />
 
-          <div className="pl-10 pt-24 max-w-4xl">
-            <div className="flex items-center justify-between mr-8">
+          <div className="pl-10 pt-20 max-w-4xl">
+            <div className="flex items-center justify-between mr-8 border-b border-gray-300 mb-4">
               <div className="text-xl font-medium flex items-center gap-4 py-4 text-gray-800">
                 <span className="text-blue-600 bg-gray-200 p-2 rounded-full">
                   <FiUser size={22} />
@@ -62,7 +63,7 @@ const Sales_Agent_View = () => {
                 </p>
               </div>
             </div>
-
+            <Leads_Agent_Filter />
             {findSales?.length === 0 && (
               <div>
                 <p>No, Lead found for this Sales Agent.</p>

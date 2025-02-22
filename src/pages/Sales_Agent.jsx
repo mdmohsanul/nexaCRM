@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router";
 import Add_Agent_Form from "../components/Add_Agent_Form";
 import Header from "../components/Header";
+import List_Shimmer from "../components/Shimmer_UI/List_Shimmer";
 import { fetchAgents } from "../features/agentsSlice";
-import AddAgent from "./AddAgent";
 
 const Sales_Agent = () => {
   const dispatch = useDispatch();
@@ -24,43 +24,45 @@ const Sales_Agent = () => {
         <div className="max-w-7xl mx-auto">
           <Header headerContent="Sales Agent Management" />
 
-          {status === "loading" && <p>Loading.....</p>}
-          {status === "success" && (
-            <div className="pl-10 pt-24">
-              <h1 className="text-2xl font-bold text-gray-900 pb-7">
-                Sales Agent List
-              </h1>
-              <div className="w-2xl h-auto  border border-gray-200   ">
-                <button
-                  className="py-4 inline bg-gray-300 pl-8 text-start w-full"
-                  onClick={() => setOpenForm(!openForm)}
-                >
-                  + Add Agent
-                </button>
-                {openForm && <Add_Agent_Form setOpenForm={setOpenForm} />}
-              </div>
-
-              <ul className="mt-7">
-                {agents?.map((agent, i) => (
-                  <li
-                    key={agent._id}
-                    className={`${
-                      i % 2 === 0 ? "bg-amber-100" : "bg-blue-300"
-                    } rounded-md w-4xl h-14 mb-3 grid cursor-pointer grid-cols-9 text-g justify-items-center content-center items-center`}
+          <div className="pl-10 pt-24">
+            {status === "loading" && <List_Shimmer />}
+            {status === "success" && (
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900 pb-7">
+                  Sales Agent List
+                </h1>
+                <div className="w-2xl h-auto  border border-gray-200   ">
+                  <button
+                    className="py-4 inline bg-gray-300 pl-8 text-start w-full"
+                    onClick={() => setOpenForm(!openForm)}
                   >
-                    <p className="">{i + 1}.</p>
-                    <Link
-                      to={`/salesAgents/${agent._id}`}
-                      className="col-span-3"
+                    + Add Agent
+                  </button>
+                  {openForm && <Add_Agent_Form setOpenForm={setOpenForm} />}
+                </div>
+
+                <ul className="mt-7">
+                  {agents?.map((agent, i) => (
+                    <li
+                      key={agent._id}
+                      className={`${
+                        i % 2 === 0 ? "bg-amber-100" : "bg-blue-300"
+                      } rounded-md w-4xl h-14 mb-3 grid cursor-pointer grid-cols-9 text-g justify-items-center content-center items-center`}
                     >
-                      <p>{agent.name}</p>
-                    </Link>
-                    <p className="col-span-3"> {agent.email}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+                      <p className="">{i + 1}.</p>
+                      <Link
+                        to={`/salesAgents/${agent._id}`}
+                        className="col-span-3"
+                      >
+                        <p>{agent.name}</p>
+                      </Link>
+                      <p className="col-span-3"> {agent.email}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </>

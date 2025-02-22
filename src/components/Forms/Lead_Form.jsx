@@ -6,6 +6,7 @@ import { addLead, fetchLeads, updateLead } from "../../features/leadSlice";
 import Dropdown from "./Dropdown";
 import Input_Box from "./Input_Box";
 import Multi_Select_Dropdown from "./Multi_Select_Dropdown";
+import { ToastContainer, toast } from "react-toastify";
 
 const Lead_Form = ({ existingData = null }) => {
   const navigate = useNavigate();
@@ -71,6 +72,10 @@ const Lead_Form = ({ existingData = null }) => {
     if (data) {
       dispatch(updateLead({ id: existingData._id, ...data }));
       clearForm();
+      toast.success("Lead updated successfully!");
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     }
   };
   const saveHandler = () => {
@@ -80,6 +85,7 @@ const Lead_Form = ({ existingData = null }) => {
       dispatch(addLead(data));
       dispatch(fetchLeads());
       clearForm();
+      toast.success("Lead added successfully!");
       setTimeout(() => {
         navigate("/");
       }, 2000);
@@ -88,7 +94,8 @@ const Lead_Form = ({ existingData = null }) => {
 
   return (
     <>
-      <div className="w-4xl h-auto  mx-auto mt-8">
+      <div className="w-4xl h-auto  mx-auto mt-24">
+        <ToastContainer />
         <form
           className="p-8 mb-7 border border-gray-200 rounded-md"
           onSubmit={(e) => e.preventDefault()}
@@ -142,8 +149,10 @@ const Lead_Form = ({ existingData = null }) => {
           />
           {err && <p>{err}</p>}
           <button
-            className={`py-2 px-5 text-white  mt-6 cursor-pointer ${
-              existingData ? "bg-green-600" : "bg-blue-600"
+            className={`py-2 px-5 text-white  mt-6 cursor-pointer rounded-lg ${
+              existingData
+                ? "bg-green-600 hover:bg-green-700"
+                : "bg-blue-600 hover:bg-blue-700"
             }`}
             onClick={existingData ? updateHandler : saveHandler}
           >
