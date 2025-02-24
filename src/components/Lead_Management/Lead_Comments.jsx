@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchComments, postComment } from "../features/commentSlice";
-import Comment_List from "../components/Comment_List";
+import { fetchComments, postComment } from "../../features/commentSlice";
+import Comment_List from "./Comment_List";
 
 const Lead_Comments = ({ findLead }) => {
   let commentRef = useRef("");

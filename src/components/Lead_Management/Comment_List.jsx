@@ -12,11 +12,11 @@ const Comment_List = ({ comment }) => {
     <>
       <article className="m-6 pb-3 text-base bg-white  dark:bg-gray-900 border-b border-gray-300">
         <div className="flex justify-between items-center mb-2">
-          <div className="flex items-center">
+          <div className="flex md:items-center flex-col md:flex-row">
             <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
               {comment?.author?.name}
             </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-[12px] md:text-sm text-gray-600 dark:text-gray-400">
               <time dateTime="2022-02-08" title="February 8th, 2022">
                 {formattedDate}
               </time>
@@ -37,7 +37,7 @@ const Comment_List = ({ comment }) => {
             {openDropdown && (
               <div
                 id="dropdownComment1"
-                className="absolute top-7 -left-12 z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                className="absolute top-7 -left-12 z-10 w-28 bg-white rounded divide-y divide-gray-100 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] dark:bg-gray-700 dark:divide-gray-600"
               >
                 <ul
                   className="py-1 text-sm text-gray-700 dark:text-gray-200"

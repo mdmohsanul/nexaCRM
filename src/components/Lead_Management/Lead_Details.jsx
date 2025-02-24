@@ -29,25 +29,24 @@ const Lead_Details = ({ findLead }) => {
             <div className="bg-white rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
               {/* Lead Header */}
               <div className="p-6 border-b border-gray-200">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h1 className="text-2xl font-bold text-gray-800">
-                      {findLead?.name}
-                    </h1>
-                    <div className="mt-2 flex items-center">
-                      <span
-                        className={`text-xs font-medium px-2 py-1 rounded ${getStatusBadge(
-                          findLead?.status
-                        )}`}
-                      >
-                        {findLead?.status}
-                      </span>
-                    </div>
+                <div className="grid md:grid-cols-2 grid-cols-1 gap-y-4 items-center">
+                  <h1 className="text-2xl font-bold text-gray-800 col-span-2">
+                    {findLead?.name}
+                  </h1>
+                  <div className="flex items-center col-span-2 md:col-span-1">
+                    <span
+                      className={`text-xs font-medium px-2 py-1 rounded ${getStatusBadge(
+                        findLead?.status
+                      )}`}
+                    >
+                      {findLead?.status}
+                    </span>
                   </div>
+
                   <Link
                     to="/addLead"
                     state={findLead}
-                    className="flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition-colors"
+                    className="flex items-center justify-center md:col-span-1 px-4 py-2 w-52 bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition-colors"
                   >
                     <TiEdit size={16} className="mr-2" />
                     Edit Lead Details

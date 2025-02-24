@@ -43,16 +43,13 @@ const Lead_List = ({ lead }) => {
 
       <div
         key={lead._id}
-        className={` rounded-md    mb-3 p-4  shadow-[0_3px_10px_rgb(0,0,0,0.2)] text-gray-900 grid cursor-pointer md:grid-cols-12 grid-cols-5 text-g grid-rows-2 md:grid-rows-1  items-center`}
+        className={` rounded-md    mb-3 p-4  shadow-[0_3px_10px_rgb(0,0,0,0.2)] text-gray-900 grid cursor-pointer md:grid-cols-12 grid-cols-5  grid-rows-2 md:grid-rows-1  items-center`}
       >
         <div className="md:col-span-3 col-span-3 text-xl">
           <Link to={`/leads/${lead._id}`} className="group">
             <p className="">
               <span className="font-medium">Lead: </span>{" "}
-              <span className="hover:text-gray-500 group-hover:text-gray-500">
-                {" "}
-                {lead.name}
-              </span>
+              <span className=" group-hover:text-gray-500"> {lead.name}</span>
             </p>
           </Link>
           <p className="text-sm pt-2">
@@ -61,7 +58,11 @@ const Lead_List = ({ lead }) => {
             <span>{getPriorityBadge(lead.priority)}</span>
           </p>
         </div>
-        <p className="col-span-2 md:ml-0 ml-10">
+        <p
+          className={`col-span-2 md:ml-0 ${
+            lead.status.length < 4 ? "ml-10" : "ml-4"
+          }`}
+        >
           {getStatusBadge(lead.status)}{" "}
         </p>
         <p className="col-span-3  flex items-center gap-2 text-lg text-gray-600">

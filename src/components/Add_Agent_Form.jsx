@@ -18,7 +18,7 @@ const Add_Agent_Form = ({ setOpenForm }) => {
   };
   return (
     <>
-      <form className="p-8 " onSubmit={(e) => e.preventDefault()}>
+      <form className="p-5 md:p-8 " onSubmit={(e) => e.preventDefault()}>
         <Input_Box
           label="Name: "
           inputType="text"

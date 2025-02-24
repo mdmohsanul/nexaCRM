@@ -97,43 +97,45 @@ const Reports = () => {
   };
   return (
     <>
-      <section className="w-full pl-60">
+      <section className="w-full md:pl-60">
         <div className="max-w-7xl mx-auto relative">
           <div className="fixed top-0 left-60 right-0 bg-white z-10">
             <div className="max-w-7xl mx-auto">
               <Header headerContent="Report Overview" />
             </div>
           </div>
-          <div className="grid grid-flow-col grid-rows-2 gap-5 pt-24 justify-items-center place-items-center mb-9">
-            <div className="  border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-7">
-              <p className="text-center pb-4 text-gray-700 text-xl">
-                Total Leads closed and in Pipeline{" "}
-              </p>
-              <Doughnut data={doughnutData} />
-            </div>
-            <div className=" border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-12 ">
-              <p className="text-center pb-4 text-gray-700 text-xl">
-                Leads Assigned to Agents{" "}
-              </p>
-              <Pie data={pieData} />
-            </div>
-            <div className="  border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-7">
-              <p className="text-center pb-4 text-gray-700 text-xl">
-                Lead Status Distribution{" "}
-              </p>
-              <Bar
-                data={chartData}
-                style={{ width: "480px", height: "500px" }}
-              />
-            </div>
-            <div className="w-xl  border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-7">
-              <p className="text-center pb-4 text-gray-700 text-xl">
-                Leads Closed by Sales Agent
-              </p>
-              <Bar
-                data={chartDataLeadClosed}
-                style={{ width: "480px", height: "500px" }}
-              />
+          <div className="max-w-3xl">
+            <div className="grid md:grid-flow-col  md:grid-rows-2 gap-5 pt-24 justify-items-center place-items-center mb-9">
+              <div className="w-64  border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-7">
+                <p className="text-center pb-4 text-gray-700 text-xl">
+                  Total Leads closed and in Pipeline{" "}
+                </p>
+                <Doughnut data={doughnutData} />
+              </div>
+              <div className=" border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-12 ">
+                <p className="text-center pb-4 text-gray-700 text-xl">
+                  Leads Assigned to Agents{" "}
+                </p>
+                <Pie data={pieData} />
+              </div>
+              <div className="  border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-7">
+                <p className="text-center pb-4 text-gray-700 text-xl">
+                  Lead Status Distribution{" "}
+                </p>
+                <Bar
+                  data={chartData}
+                  style={{ width: "480px", height: "500px" }}
+                />
+              </div>
+              <div className="w-xl  border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-7">
+                <p className="text-center pb-4 text-gray-700 text-xl">
+                  Leads Closed by Sales Agent
+                </p>
+                <Bar
+                  data={chartDataLeadClosed}
+                  style={{ width: "480px", height: "500px" }}
+                />
+              </div>
             </div>
           </div>
         </div>

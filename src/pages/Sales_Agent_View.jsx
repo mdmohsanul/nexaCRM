@@ -56,12 +56,12 @@ const Sales_Agent_View = () => {
   };
   return (
     <>
-      <section className="w-full pl-60 ">
+      <section className="w-full md:pl-60 ">
         <div className="max-w-7xl mx-auto">
           <Header headerContent="Sales Agent View" />
 
-          <div className="pl-10 pt-20 max-w-4xl">
-            <div className="flex items-center justify-between mr-8 border-b border-gray-300 mb-4">
+          <div className="mx-5 md:mx-10 mb-14 pt-36 md:pt-24 max-w-4xl">
+            <div className="flex items-center justify-between md:mr-8 border-b border-gray-300 mb-4">
               <div className="text-xl font-medium flex items-center gap-4 py-4 text-gray-800">
                 <span className="text-blue-600 bg-gray-200 p-2 rounded-full">
                   <FiUser size={22} />
@@ -93,30 +93,37 @@ const Sales_Agent_View = () => {
                 <Link to="/addLead">Go to create lead</Link>
               </div>
             )}
+            {/* Filtered Leads */}
             <ul className="mt-7 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg  ">
               {sales?.map((lead, i) => (
                 <div
                   key={lead._id}
                   className="
-               px-6 border-b py-5 border-gray-200 text-gray-900 grid cursor-pointer grid-cols-9 gap-8 justify-items-start  items-center"
+                border-b p-4 md:p-6 border-gray-200 text-gray-900 grid cursor-pointer grid-cols-5 md:grid-cols-8 gap-y-2  justify-items-start  items-center"
                 >
-                  <Link to={`/leads/${lead._id}`} className="col-span-4">
-                    <p className="flex flex-col">
-                      <span className="text-lg text-gray-800">
+                  <Link to={`/leads/${lead._id}`} className="col-span-3 ">
+                    <p className="flex flex-col text-lg">
+                      <span className="text-lg text-gray-800 hover:text-gray-600">
                         Lead: {lead.name}
-                      </span>
-                      <span className="flex items-center  text-gray-500 text-[16px]">
-                        {" "}
-                        <span className="pr-2">
-                          <BsTag />
-                        </span>{" "}
-                        Priority: {lead.priority}
                       </span>
                     </p>
                   </Link>
 
-                  <p className="col-span-3">{getPriorityBadge(lead.status)}</p>
-                  <p className="col-span-2 flex items-center justify-center text-gray-500">
+                  <p
+                    className={`col-span-2 md:col-span-1 md:ml-0 ${
+                      lead.status.length < 4 ? "ml-10" : "ml-0"
+                    }`}
+                  >
+                    {getPriorityBadge(lead.status)}
+                  </p>
+                  <p className="flex items-center md:col-span-3 text-gray-500 text-[16px] col-span-3">
+                    {" "}
+                    <span className="pr-2">
+                      <BsTag />
+                    </span>{" "}
+                    Priority: {lead.priority}
+                  </p>
+                  <p className="col-span-2 md:col-span-1 flex items-center justify-center text-gray-500">
                     <span className="pr-2">
                       <GoClock />
                     </span>{" "}

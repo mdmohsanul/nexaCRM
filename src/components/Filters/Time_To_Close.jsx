@@ -7,7 +7,7 @@ const Time_To_Close = ({ setValue, value }) => {
         <select
           name="closeTime"
           id="closeTime"
-          className="text-sm rounded-sm border border-gray-300  text-gray-700 p-2 md:w-40 w-36"
+          className="text-sm rounded-sm border border-gray-300  text-gray-700 p-2  w-36 md:w-40"
           value={value}
           onChange={(e) => setValue(e.target.value)}
         >

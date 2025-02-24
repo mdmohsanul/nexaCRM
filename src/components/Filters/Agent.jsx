@@ -11,7 +11,7 @@ const Agent = ({ setValue, value }) => {
           id="agents"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="text-sm rounded-sm border border-gray-300  text-gray-700 py-2 px-2 w-40"
+          className="text-sm rounded-sm border border-gray-300  text-gray-700 py-2 px-2 w-36 md:w-40"
         >
           <option value="">Sales Agent</option>
           {agents?.map((item) => (

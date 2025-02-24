@@ -49,7 +49,7 @@ const Lead_Filters = () => {
       <div className="flex flex-col md:flex-row gap-y-4 items-start md:items-center justify-start mb-6 border-b border-gray-300 pb-4">
         <div className="flex  flex-col gap-2.5 md:w-3/4 ">
           <div className="grid grid-cols-2 gap-y-2 md:grid-cols-9 items-center">
-            <h1 className="pr-2 col-span-2 md:col-span-1 text-gray-800 font-medium">
+            <h1 className=" col-span-2 md:col-span-1 text-gray-800 font-medium">
               Filters:{" "}
             </h1>
 
@@ -88,7 +88,7 @@ const Lead_Filters = () => {
             </label>
           </div>
           <div className="grid grid-cols-2 gap-y-2 md:grid-cols-9 items-center">
-            <h1 className="mr-3 col-span-2 md:col-span-1 text-gray-800 font-medium">
+            <h1 className=" col-span-2 md:col-span-1 text-gray-800 font-medium">
               Sort By:{" "}
             </h1>
 
@@ -106,7 +106,7 @@ const Lead_Filters = () => {
               </select>
             </label>
             <Time_To_Close
-              value="selectTimeToClose"
+              value={selectTimeToClose}
               setValue={setSelectTimeToClose}
             />
           </div>

@@ -16,7 +16,7 @@ const Status = ({ setValue, value }) => {
           id="status"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="text-sm rounded-sm border border-gray-300 ml-3 text-gray-700 p-2 w-40"
+          className="text-sm rounded-sm border border-gray-300  text-gray-700 p-2 w-36 md:w-40"
         >
           <option value="">Status</option>
           {leadStatusArr.map((item, i) => (
