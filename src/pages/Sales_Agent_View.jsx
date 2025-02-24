@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { Link } from "react-router";
@@ -7,7 +7,7 @@ import { BsTag } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
 import { FaDiagramProject } from "react-icons/fa6";
 import Header from "../components/Header";
-import Leads_Agent_Filter from "../components/Leads_Agent_Filter";
+import Sales_Agent_Filter from "../components/Sales_Agent_Filter";
 
 const Sales_Agent_View = () => {
   const { id } = useParams();
@@ -16,6 +16,27 @@ const Sales_Agent_View = () => {
 
   const agentDetails = agents?.find((item) => item._id === id);
   const findSales = leads.filter((item) => item.salesAgent._id === id);
+
+  const { filterStatus, filterPriority, filterTimeToClose } = useSelector(
+    (state) => state.filters
+  );
+  const [sales, setSales] = useState(findSales);
+  useEffect(() => {
+    let filtered = findSales;
+    if (filterStatus) {
+      filtered = filtered.filter((item) => item.status === filterStatus);
+    }
+    if (filterPriority) {
+      filtered = filtered.filter((item) => item.priority === filterPriority);
+    }
+    if (filterTimeToClose === "Quickest to Close") {
+      filtered = [...filtered].sort((a, b) => a.timeToClose - b.timeToClose);
+    }
+    if (filterTimeToClose === "Slowest to Close") {
+      filtered = [...filtered].sort((a, b) => b.timeToClose - a.timeToClose);
+    }
+    setSales(filtered);
+  }, [filterStatus, filterPriority, filterTimeToClose]);
 
   const getPriorityBadge = (priority) => {
     const classes = {
@@ -63,7 +84,9 @@ const Sales_Agent_View = () => {
                 </p>
               </div>
             </div>
-            <Leads_Agent_Filter />
+            {/* Filters */}
+            <Sales_Agent_Filter />
+
             {findSales?.length === 0 && (
               <div>
                 <p>No, Lead found for this Sales Agent.</p>
@@ -71,7 +94,7 @@ const Sales_Agent_View = () => {
               </div>
             )}
             <ul className="mt-7 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg  ">
-              {findSales?.map((lead, i) => (
+              {sales?.map((lead, i) => (
                 <div
                   key={lead._id}
                   className="

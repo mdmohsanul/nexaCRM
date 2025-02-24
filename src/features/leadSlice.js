@@ -5,12 +5,10 @@ export const fetchLeads = createAsyncThunk("lead/fetchLeads", async () => {
   const response = await axios.get(
     "https://nexa-crm-backend.vercel.app/api/leads"
   );
-  console.log("response data", response.data);
 
   return response.data;
 });
 export const addLead = createAsyncThunk("lead/addLead", async (data) => {
-  console.log("data", data);
   const response = await axios.post(
     "https://nexa-crm-backend.vercel.app/api/leads",
     data
@@ -21,7 +19,6 @@ export const addLead = createAsyncThunk("lead/addLead", async (data) => {
 export const updateLead = createAsyncThunk(
   "lead/updateLead",
   async (updatedData) => {
-    console.log(updatedData);
     const { id, ...rest } = updatedData;
     const response = await axios.put(
       `https://nexa-crm-backend.vercel.app/api/leads/${id}`,
@@ -46,6 +43,8 @@ const leadSlice = createSlice({
     error: null,
     agentName: "",
     leadStatus: "",
+    leadPriority: "",
+    leadTimeToClose: "",
   },
   reducers: {
     salesAgentName: (state, action) => {
@@ -53,6 +52,12 @@ const leadSlice = createSlice({
     },
     leadStatusFilter: (state, action) => {
       state.leadStatus = action.payload;
+    },
+    leadPriorityFilter: (state, action) => {
+      state.leadPriority = action.payload;
+    },
+    leadTimeToCloseFilter: (state, action) => {
+      state.leadTimeToClose = action.payload;
     },
   },
   extraReducers: (builders) => {
@@ -85,6 +90,11 @@ const leadSlice = createSlice({
   },
 });
 
-export const { salesAgentName, leadStatusFilter } = leadSlice.actions;
+export const {
+  salesAgentName,
+  leadStatusFilter,
+  leadPriorityFilter,
+  leadTimeToCloseFilter,
+} = leadSlice.actions;
 
 export default leadSlice.reducer;

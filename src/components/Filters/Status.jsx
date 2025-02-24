@@ -1,6 +1,6 @@
 import React from "react";
 
-const Status = () => {
+const Status = ({ setValue, value }) => {
   const leadStatusArr = [
     "New",
     "Contacted",
@@ -14,6 +14,8 @@ const Status = () => {
         <select
           name="status"
           id="status"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
           className="text-sm rounded-sm border border-gray-300 ml-3 text-gray-700 p-2 w-40"
         >
           <option value="">Status</option>

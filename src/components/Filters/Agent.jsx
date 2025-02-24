@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const Agent = () => {
+const Agent = ({ setValue, value }) => {
   const { agents } = useSelector((state) => state.agents);
   return (
     <>
@@ -9,6 +9,8 @@ const Agent = () => {
         <select
           name="agents"
           id="agents"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
           className="text-sm rounded-sm border border-gray-300  text-gray-700 py-2 px-2 w-40"
         >
           <option value="">Sales Agent</option>

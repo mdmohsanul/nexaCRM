@@ -1,19 +1,27 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Lead_Filters from "../components/Lead_Filters";
 import { Link } from "react-router";
-import Lead_List from "../components/Lead_List";
+import Lead_List from "../components/Leads/Lead_List";
+import Lead_Filters from "../components/Leads/Lead_Filters";
 import Header from "../components/Header";
 import { fetchLeads } from "../features/leadSlice";
 import List_Shimmer from "../components/Shimmer_UI/List_Shimmer";
 
 const Leads = () => {
   const dispatch = useDispatch();
-  const { leads, status, error, agentName, leadStatus } = useSelector(
-    (state) => state.lead
-  );
-  console.log("render");
+  const {
+    leads,
+    status,
+    error,
+    agentName,
+    leadStatus,
+    leadPriority,
+    leadTimeToClose,
+  } = useSelector((state) => state.lead);
+  console.log(leadTimeToClose);
+  let priorityMap = { High: 1, Medium: 2, Low: 3 };
   const [filteredProducts, setFilteredProducts] = useState(leads);
+
   useEffect(() => {
     let filtered = leads;
     if (agentName) {
@@ -22,8 +30,26 @@ const Leads = () => {
     if (leadStatus) {
       filtered = filtered.filter((p) => p.status === leadStatus);
     }
+    if (leadPriority === "High") {
+      filtered = [...filtered].sort(
+        (a, b) => priorityMap[a.priority] - priorityMap[b.priority]
+      );
+    }
+    if (leadPriority === "Low") {
+      filtered = [...filtered].sort(
+        (a, b) => priorityMap[b.priority] - priorityMap[a.priority]
+      );
+    }
+    if (leadTimeToClose === "Quickest to Close") {
+      filtered = [...filtered].sort((a, b) => a.timeToClose - b.timeToClose);
+    }
+    if (leadTimeToClose === "Slowest to Close") {
+      filtered = [...filtered].sort((a, b) => b.timeToClose - a.timeToClose);
+    }
+
     setFilteredProducts(filtered);
-  }, [agentName, leadStatus, leads]);
+  }, [agentName, leadStatus, leads, leadPriority, leadTimeToClose]);
+
   // useEffect(() => {
   //   dispatch(fetchLeads());
   // }, []);
@@ -33,7 +59,7 @@ const Leads = () => {
       <section className="w-full md:pl-60">
         <div className="max-w-7xl mx-auto relative">
           <Header headerContent="Leads" />
-          <div className="max-w-4xl pt-36 md:pt-24 md:ml-10 mx-3">
+          <div className="max-w-5xl pt-36 md:pt-24 md:ml-10 mx-5">
             {status === "loading" && <List_Shimmer />}
             {error && <p>{error}</p>}
             {status === "success" && leads.length > 0 ? (

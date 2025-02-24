@@ -8,6 +8,7 @@ const Lead_Comments = ({ findLead }) => {
   let commentRef = useRef("");
   const dispatch = useDispatch();
   const [selectAgent, setSelectAgent] = useState("");
+  const [commentText, setCommentText] = useState("");
   const [err, setErr] = useState("");
 
   const { agents } = useSelector((state) => state.agents);
@@ -22,10 +23,13 @@ const Lead_Comments = ({ findLead }) => {
     const data = {
       id: findLead._id,
       author: selectAgent,
-      commentText: commentRef.current,
+      commentText,
     };
+    console.log("comment ", data);
     setErr("");
     dispatch(postComment(data));
+    setSelectAgent("");
+    setCommentText("");
   };
   useEffect(() => {
     console.log("useeffect");
@@ -47,7 +51,9 @@ const Lead_Comments = ({ findLead }) => {
               </label>
               <textarea
                 ref={commentRef}
-                onChange={(e) => (commentRef.current = e.target.value)}
+                // onChange={(e) => (commentRef.current = e.target.value)}
+                onChange={(e) => setCommentText(e.target.value)}
+                value={commentText}
                 id="comment"
                 rows="6"
                 className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
@@ -61,6 +67,7 @@ const Lead_Comments = ({ findLead }) => {
                 name="agents"
                 id="agents"
                 className="border rounded-lg"
+                value={selectAgent}
                 onChange={(e) => setSelectAgent(e.target.value)}
               >
                 <option value="">Select Agent ...</option>

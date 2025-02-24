@@ -4,7 +4,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { GoClock } from "react-icons/go";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { Link } from "react-router";
-import { deleteLead } from "../features/leadSlice";
+import { deleteLead } from "../../features/leadSlice";
 
 const Lead_List = ({ lead }) => {
   const getStatusBadge = (status) => {
@@ -43,7 +43,7 @@ const Lead_List = ({ lead }) => {
 
       <div
         key={lead._id}
-        className={` rounded-md   py-4 mb-3 pl-8 md:gap-4 shadow-[0_3px_10px_rgb(0,0,0,0.2)] text-gray-900 grid cursor-pointer md:grid-cols-12 grid-cols-5 text-g grid-rows-2 md:grid-rows-1  items-center`}
+        className={` rounded-md    mb-3 p-4  shadow-[0_3px_10px_rgb(0,0,0,0.2)] text-gray-900 grid cursor-pointer md:grid-cols-12 grid-cols-5 text-g grid-rows-2 md:grid-rows-1  items-center`}
       >
         <div className="md:col-span-3 col-span-3 text-xl">
           <Link to={`/leads/${lead._id}`} className="group">
@@ -55,17 +55,19 @@ const Lead_List = ({ lead }) => {
               </span>
             </p>
           </Link>
-          <p className="text-sm pt-3">
+          <p className="text-sm pt-2">
             <span></span>
             <span>Priority: </span>
             <span>{getPriorityBadge(lead.priority)}</span>
           </p>
         </div>
-        <p className="col-span-2">{getStatusBadge(lead.status)} </p>
+        <p className="col-span-2 md:ml-0 ml-10">
+          {getStatusBadge(lead.status)}{" "}
+        </p>
         <p className="col-span-3  flex items-center gap-2 text-lg text-gray-600">
           <FaRegCircleUser /> {lead.salesAgent.name}
         </p>
-        <p className=" col-span-2  flex items-center gap-2 text-gray-600">
+        <p className=" col-span-2  flex items-center ml-5 md:ml-0 gap-2 text-gray-600">
           <GoClock /> {lead.timeToClose} days
         </p>
         <div className="relative group flex items-center">

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import "./App.css";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import { fetchAgents } from "./features/agentsSlice";
 import { fetchLeads } from "./features/leadSlice";
 import Add_New_Lead from "./pages/Add_New_Lead";

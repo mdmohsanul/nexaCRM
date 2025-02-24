@@ -22,10 +22,10 @@ const Dashboard = () => {
       return acc;
     }, {})
   ).map((item) => ({ status: item[0], count: item[1] }));
-  console.log(leadStatus);
-  // useEffect(() => {
-  //   dispatch(fetchLeads());
-  // }, []);
+
+  useEffect(() => {
+    dispatch(fetchLeads());
+  }, []);
 
   // In leadStatus array we are adding icons to every object
   function combineLeadWithIcons(arr1, arr2) {
@@ -41,7 +41,7 @@ const Dashboard = () => {
         <div className="max-w-7xl mx-auto ">
           <Header headerContent="Dashboard" />
 
-          <div className="pt-24 md:pl-10 px-7 max-w-5xl mx-auto">
+          <div className="pt-36 md:pt-24 md:pl-10 px-7 max-w-5xl mx-auto">
             {status === "loading" && <Box_Shimmer />}
             {/* {status === "success" && (
              
@@ -53,7 +53,7 @@ const Dashboard = () => {
                 </h2>
                 <Link
                   to="/addLead"
-                  className="bg-blue-600 text-white py-2 px-6 ml-10 rounded-lg cursor-pointer md:mr-10 hover:bg-blue-800"
+                  className="bg-blue-600 text-white py-2 md:px-6 px-4 md:ml-10 rounded-lg cursor-pointer md:mr-10 hover:bg-blue-800"
                 >
                   + Add Lead
                 </Link>
@@ -61,7 +61,7 @@ const Dashboard = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-7 my-5 ">
                 {updateLeads?.map((item, i) => (
                   <Link to={`/leadStatus/${item.status}`} key={i}>
-                    <div className=" md:w-48 w-44 md:py-6 py-4 flex flex-col items-center gap-3 justify-center cursor-pointer shadow-[0_3px_10px_rgb(0,0,0,0.2)] hover:shadow-[-4px_14px_25px_13px_#00000024]">
+                    <div className=" md:w-48 w-36 md:py-6 py-4 flex flex-col items-center md:gap-3 gap-2 justify-center cursor-pointer shadow-[0_3px_10px_rgb(0,0,0,0.2)] hover:shadow-[-4px_14px_25px_13px_#00000024]">
                       <span>
                         {
                           <item.linkIcon.icon

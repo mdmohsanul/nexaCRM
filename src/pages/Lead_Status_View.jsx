@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GoClock } from "react-icons/go";
 import { TbUsers } from "react-icons/tb";
 import Header from "../components/Header";
@@ -9,8 +9,31 @@ import Lead_Status_Filter from "../components/Lead_Status_Filter";
 const Lead_Status_View = () => {
   const { status } = useParams();
   const { leads, error } = useSelector((state) => state.lead);
+  const { filterSalesAgent, filterPriority, filterTimeToClose } = useSelector(
+    (state) => state.filters
+  );
 
   const leadByStatus = leads.filter((lead) => lead.status === status);
+  const [filteredLeads, setFilteredLeads] = useState(leadByStatus);
+  useEffect(() => {
+    let filtered = leadByStatus;
+    if (filterSalesAgent) {
+      filtered = filtered.filter(
+        (item) => item.salesAgent.name === filterSalesAgent
+      );
+    }
+    if (filterPriority) {
+      filtered = filtered.filter((item) => item.priority === filterPriority);
+    }
+    if (filterTimeToClose === "Quickest to Close") {
+      filtered = [...filtered].sort((a, b) => a.timeToClose - b.timeToClose);
+    }
+    if (filterTimeToClose === "Slowest to Close") {
+      filtered = [...filtered].sort((a, b) => b.timeToClose - a.timeToClose);
+    }
+    setFilteredLeads(filtered);
+  }, [filterSalesAgent, filterPriority, filterTimeToClose]);
+
   const getPriorityBadge = (priority) => {
     const classes = {
       High: "bg-red-200 text-red-800",
@@ -42,7 +65,7 @@ const Lead_Status_View = () => {
               <Lead_Status_Filter />
             </div>
             <div className="shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg  my-5">
-              {leadByStatus?.map((item, i) => (
+              {filteredLeads?.map((item, i) => (
                 <div
                   key={item._id}
                   className="
