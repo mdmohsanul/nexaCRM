@@ -12,7 +12,7 @@ const Sidebar = () => {
   return (
     <>
       <div>
-        <div className="md:hidden w-full h-14 fixed top-0  left-0 z-40">
+        <div className="md:hidden w-full h-14 fixed top-0 bg-white left-0 z-40">
           <div className="flex items-center justify-between px-8 py-2.5">
             <button className="text-black" onClick={() => setNav(!nav)}>
               {nav ? <RxCross2 size={30} /> : <GiHamburgerMenu size={30} />}
