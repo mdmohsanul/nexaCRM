@@ -6,7 +6,7 @@ const Dropdown = ({ options, label, value, setValue, name }) => {
     <>
       <div className="mb-3 ">
         <label htmlFor={name}>{label}: </label>
-        <div className="mt-2 w-2/4 grid grid-cols-1">
+        <div className="mt-2 md:w-2/4 grid grid-cols-1">
           <select
             name={name}
             id={name}

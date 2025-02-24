@@ -10,7 +10,7 @@ const Comment_List = ({ comment }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   return (
     <>
-      <article className="p-6 text-base bg-white  dark:bg-gray-900 border-b border-gray-300">
+      <article className="m-6 pb-3 text-base bg-white  dark:bg-gray-900 border-b border-gray-300">
         <div className="flex justify-between items-center mb-2">
           <div className="flex items-center">
             <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">

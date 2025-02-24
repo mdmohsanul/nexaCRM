@@ -10,7 +10,7 @@ const Add_New_Lead = () => {
 
   return (
     <>
-      <section className="w-full pl-60 ">
+      <section className="w-full md:pl-60 ">
         <div className="max-w-7xl mx-auto">
           <Header headerContent="Add New Lead" />
 

@@ -94,10 +94,10 @@ const Lead_Form = ({ existingData = null }) => {
 
   return (
     <>
-      <div className="w-4xl h-auto  mx-auto mt-24">
+      <div className="max-w-4xl h-auto  mx-auto mt-36 md:mt-24 ">
         <ToastContainer />
         <form
-          className="p-8 mb-7 border border-gray-200 rounded-md"
+          className="md:p-8 p-4 mb-7 border border-gray-200 rounded-md mx-4"
           onSubmit={(e) => e.preventDefault()}
         >
           <Input_Box

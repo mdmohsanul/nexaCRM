@@ -43,25 +43,29 @@ const Lead_List = ({ lead }) => {
 
       <div
         key={lead._id}
-        className={` rounded-md   py-4 mb-3 pl-8 gap-4 shadow-[0_3px_10px_rgb(0,0,0,0.2)] text-gray-900 grid cursor-pointer grid-cols-10 text-g  items-center`}
+        className={` rounded-md   py-4 mb-3 pl-8 md:gap-4 shadow-[0_3px_10px_rgb(0,0,0,0.2)] text-gray-900 grid cursor-pointer md:grid-cols-12 grid-cols-5 text-g grid-rows-2 md:grid-rows-1  items-center`}
       >
-        <div className="col-span-3 text-lg">
-          <Link to={`/leads/${lead._id}`}>
+        <div className="md:col-span-3 col-span-3 text-xl">
+          <Link to={`/leads/${lead._id}`} className="group">
             <p className="">
-              <span className="font-medium">Lead: </span> {lead.name}
+              <span className="font-medium">Lead: </span>{" "}
+              <span className="hover:text-gray-500 group-hover:text-gray-500">
+                {" "}
+                {lead.name}
+              </span>
             </p>
           </Link>
-          <p className="text-sm">
+          <p className="text-sm pt-3">
             <span></span>
             <span>Priority: </span>
             <span>{getPriorityBadge(lead.priority)}</span>
           </p>
         </div>
-        <p className="col-span-2 flex items-center gap-2 text-gray-600">
+        <p className="col-span-2">{getStatusBadge(lead.status)} </p>
+        <p className="col-span-3  flex items-center gap-2 text-lg text-gray-600">
           <FaRegCircleUser /> {lead.salesAgent.name}
         </p>
-        <p className="col-span-2">{getStatusBadge(lead.status)} </p>
-        <p className="-ml-8 flex items-center gap-2 text-gray-600">
+        <p className=" col-span-2  flex items-center gap-2 text-gray-600">
           <GoClock /> {lead.timeToClose} days
         </p>
         <div className="relative group flex items-center">

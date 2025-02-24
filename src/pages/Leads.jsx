@@ -30,10 +30,10 @@ const Leads = () => {
 
   return (
     <>
-      <section className="w-full pl-60">
+      <section className="w-full md:pl-60">
         <div className="max-w-7xl mx-auto relative">
           <Header headerContent="Leads" />
-          <div className="max-w-4xl pt-24 ml-10">
+          <div className="max-w-4xl pt-36 md:pt-24 md:ml-10 mx-3">
             {status === "loading" && <List_Shimmer />}
             {error && <p>{error}</p>}
             {status === "success" && leads.length > 0 ? (

@@ -38,7 +38,7 @@ const Lead_Filters = () => {
   };
   return (
     <>
-      <div className="flex items-center justify-between mb-6 border-b border-gray-300 pb-4">
+      <div className="flex flex-col md:flex-row gap-y-4 items-center justify-between mb-6 border-b border-gray-300 pb-4">
         <div className="flex  flex-col gap-2.5">
           <div className="flex items-center">
             <h1 className="pr-2  text-gray-800 font-medium">Filters: </h1>
@@ -47,7 +47,7 @@ const Lead_Filters = () => {
               <select
                 name="status"
                 id="status"
-                className="text-sm rounded-sm border border-gray-300 ml-3 text-gray-700 p-2 w-40"
+                className="text-sm rounded-sm border border-gray-300 ml-3 text-gray-700 p-2 md:w-40 w-32"
                 onChange={(e) => updateFilters("leadStatus", e.target.value)}
                 value={leadStatus}
               >
@@ -64,7 +64,7 @@ const Lead_Filters = () => {
               <select
                 name="agents"
                 id="agents"
-                className="text-sm rounded-sm border border-gray-300  text-gray-700 py-2 px-2 w-40"
+                className="text-sm rounded-sm border border-gray-300  text-gray-700 py-2 px-2 md:w-40 w-32"
                 onChange={(e) => updateFilters("salesAgent", e.target.value)}
                 value={salesAgent}
               >
@@ -84,7 +84,7 @@ const Lead_Filters = () => {
               <select
                 name="priority"
                 id="priority"
-                className="text-sm rounded-sm border border-gray-300  text-gray-700 p-2 w-40"
+                className="text-sm rounded-sm border border-gray-300  text-gray-700 p-2 md:w-40 w-32"
               >
                 <option value="">Priority</option>
                 <option value="High">High</option>

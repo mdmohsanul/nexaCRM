@@ -21,12 +21,12 @@ const Lead_Details = ({ findLead }) => {
   };
   return (
     <>
-      <div className="max-w-3xl  mt-6 ml-10">
+      <div className="max-w-3xl  my-4 ">
         {/* Main Content */}
         <div className="flex-1">
           {/* Lead Details Card */}
-          <div className="p-6">
-            <div className="bg-white rounded-lg shadow-md">
+          <div className="">
+            <div className="bg-white rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
               {/* Lead Header */}
               <div className="p-6 border-b border-gray-200">
                 <div className="flex justify-between items-start">

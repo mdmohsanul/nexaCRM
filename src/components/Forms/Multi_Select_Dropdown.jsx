@@ -23,7 +23,7 @@ const Multi_Select_Dropdown = ({ selected, setSelected }) => {
   };
 
   return (
-    <div className="relative mt-2 w-2/4 ">
+    <div className="relative mt-2 md:w-2/4 ">
       <label htmlFor="tags">Tags: </label>
       {/* Dropdown Button */}
       <div

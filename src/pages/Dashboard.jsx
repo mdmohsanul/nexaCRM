@@ -37,11 +37,11 @@ const Dashboard = () => {
   }
   return (
     <>
-      <section className="w-full pl-60 ">
+      <section className="w-full md:pl-60 ">
         <div className="max-w-7xl mx-auto ">
           <Header headerContent="Dashboard" />
 
-          <div className="pt-24 pl-10 max-w-5xl ">
+          <div className="pt-24 md:pl-10 px-7 max-w-5xl mx-auto">
             {status === "loading" && <Box_Shimmer />}
             {/* {status === "success" && (
              
@@ -53,7 +53,7 @@ const Dashboard = () => {
                 </h2>
                 <Link
                   to="/addLead"
-                  className="bg-blue-600 text-white py-2 px-6 ml-10 rounded-lg cursor-pointer mr-10 hover:bg-blue-800"
+                  className="bg-blue-600 text-white py-2 px-6 ml-10 rounded-lg cursor-pointer md:mr-10 hover:bg-blue-800"
                 >
                   + Add Lead
                 </Link>
@@ -61,7 +61,7 @@ const Dashboard = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-7 my-5 ">
                 {updateLeads?.map((item, i) => (
                   <Link to={`/leadStatus/${item.status}`} key={i}>
-                    <div className=" w-48 py-6 flex flex-col items-center gap-3 justify-center cursor-pointer shadow-[0_3px_10px_rgb(0,0,0,0.2)] hover:shadow-[-4px_14px_25px_13px_#00000024]">
+                    <div className=" md:w-48 w-44 md:py-6 py-4 flex flex-col items-center gap-3 justify-center cursor-pointer shadow-[0_3px_10px_rgb(0,0,0,0.2)] hover:shadow-[-4px_14px_25px_13px_#00000024]">
                       <span>
                         {
                           <item.linkIcon.icon
