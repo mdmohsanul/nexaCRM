@@ -18,7 +18,7 @@ const Leads = () => {
     leadPriority,
     leadTimeToClose,
   } = useSelector((state) => state.lead);
-  console.log(leadTimeToClose);
+
   let priorityMap = { High: 1, Medium: 2, Low: 3 };
   const [filteredProducts, setFilteredProducts] = useState(leads);
 

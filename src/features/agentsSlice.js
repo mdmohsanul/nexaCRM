@@ -10,12 +10,11 @@ export const fetchAgents = createAsyncThunk("agents/fetchAgents", async () => {
 });
 
 export const addAgent = createAsyncThunk("agent/addAgent", async (data) => {
-  console.log(data);
   const response = await axios.post(
     "https://nexa-crm-backend.vercel.app/api/agents",
     data
   );
-  console.log(response.data.newAgent);
+
   return response.data.newAgent;
 });
 

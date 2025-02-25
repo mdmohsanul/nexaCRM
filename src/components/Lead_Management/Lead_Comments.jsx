@@ -25,14 +25,13 @@ const Lead_Comments = ({ findLead }) => {
       author: selectAgent,
       commentText,
     };
-    console.log("comment ", data);
+
     setErr("");
     dispatch(postComment(data));
     setSelectAgent("");
     setCommentText("");
   };
   useEffect(() => {
-    console.log("useeffect");
     dispatch(fetchComments(findLead?._id));
   }, [findLead, dispatch]);
   return (

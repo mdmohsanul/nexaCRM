@@ -7,7 +7,6 @@ import { TbUsers } from "react-icons/tb";
 import { BsTag } from "react-icons/bs";
 
 const Lead_Details = ({ findLead }) => {
-  console.log(findLead);
   const getStatusBadge = (status) => {
     const classes = {
       New: "bg-blue-100 text-blue-800",

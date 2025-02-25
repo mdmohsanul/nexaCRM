@@ -5,13 +5,12 @@ export const postComment = createAsyncThunk(
   "comment/postComment",
   async (data) => {
     const { id, ...rest } = data;
-    console.log(id);
-    console.log(rest);
+
     const response = await axios.post(
       `https://nexa-crm-backend.vercel.app/api/comments/${id}`,
       rest
     );
-    console.log(response.data);
+
     return response.data;
   }
 );
@@ -21,7 +20,7 @@ export const fetchComments = createAsyncThunk(
     const response = await axios.get(
       `https://nexa-crm-backend.vercel.app/api/comments/${id}`
     );
-    console.log(response.data);
+
     return response.data;
   }
 );

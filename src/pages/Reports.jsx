@@ -104,22 +104,22 @@ const Reports = () => {
               <Header headerContent="Report Overview" />
             </div>
           </div>
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-5 md:mx-10 pt-24 md:pt-6 mb-10">
             <div className="grid md:grid-flow-col  md:grid-rows-2 gap-5 pt-24 justify-items-center place-items-center mb-9">
-              <div className="w-64  border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-7">
-                <p className="text-center pb-4 text-gray-700 text-xl">
+              <div className="  border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-7">
+                <p className="text-center pb-4 text-gray-700 text-xl font-medium">
                   Total Leads closed and in Pipeline{" "}
                 </p>
                 <Doughnut data={doughnutData} />
               </div>
               <div className=" border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-12 ">
-                <p className="text-center pb-4 text-gray-700 text-xl">
+                <p className="text-center pb-4 text-gray-700 text-xl font-medium">
                   Leads Assigned to Agents{" "}
                 </p>
                 <Pie data={pieData} />
               </div>
-              <div className="  border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-7">
-                <p className="text-center pb-4 text-gray-700 text-xl">
+              <div className="  border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg py-7 px-3">
+                <p className="text-center pb-4 text-gray-700 text-xl font-medium">
                   Lead Status Distribution{" "}
                 </p>
                 <Bar
@@ -127,8 +127,8 @@ const Reports = () => {
                   style={{ width: "480px", height: "500px" }}
                 />
               </div>
-              <div className="w-xl  border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg p-7">
-                <p className="text-center pb-4 text-gray-700 text-xl">
+              <div className="  border border-gray-200 shadow-[-1px_-1px_37px_1px_#00000024] rounded-lg py-7 px-3">
+                <p className="text-center pb-4 text-gray-700 text-xl font-medium">
                   Leads Closed by Sales Agent
                 </p>
                 <Bar

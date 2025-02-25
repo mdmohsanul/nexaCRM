@@ -73,7 +73,6 @@ const leadSlice = createSlice({
         state.error = action.error.message;
       }),
       builders.addCase(addLead.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.leads.push(action.payload);
       }),
       builders.addCase(updateLead.fulfilled, (state, action) => {

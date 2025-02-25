@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addAgent } from "../features/agentsSlice";
 import Input_Box from "./Forms/Input_Box";
+import { ToastContainer, toast } from "react-toastify";
 
 const Add_Agent_Form = ({ setOpenForm }) => {
   const dispatch = useDispatch();
@@ -13,11 +14,14 @@ const Add_Agent_Form = ({ setOpenForm }) => {
       setErr("Please Fill all the details!");
     }
     dispatch(addAgent({ name: agentName, email: agentEmail }));
+
     setAgentEmail("");
     setAgentName("");
+    toast.success("Agent added successfully");
   };
   return (
     <>
+      <ToastContainer />
       <form className="p-5 md:p-8 " onSubmit={(e) => e.preventDefault()}>
         <Input_Box
           label="Name: "
